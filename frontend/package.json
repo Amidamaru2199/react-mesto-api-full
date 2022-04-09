@@ -16,7 +16,8 @@
     "start": "set PORT=3007 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && scp -r ./build/* amidamaru@51.250.74.120:/home/amidamaru/react-mesto-auth"
   },
   "eslintConfig": {
     "extends": [
