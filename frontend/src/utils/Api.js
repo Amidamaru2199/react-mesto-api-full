@@ -104,7 +104,7 @@ class Api {
 export const api = new Api({
   baseUrl: "https://api.sarmat.students.nomoredomains.work",
   headers: {
-    authorization: '08f9f164-aeb4-4a4d-a2a1-640ddc7d6c20',
+    authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json'
   }
 });
