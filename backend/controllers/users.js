@@ -103,6 +103,7 @@ module.exports.getUserAuth = (req, res, next) => {
           about: users.about,
           avatar: users.avatar,
           name: users.name,
+          email: users.email,
           _id: users._id,
         });
       }

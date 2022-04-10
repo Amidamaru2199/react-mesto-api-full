@@ -12,6 +12,7 @@ class Api {
   };
 
   getInitialCards() {
+    console.dir(this._headers)
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
@@ -19,6 +20,7 @@ class Api {
   };
 
   getUserInfo() {
+    console.dir(this._headers)
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
@@ -101,10 +103,14 @@ class Api {
   }
 };
 
+function getToken() {
+  return localStorage.getItem('jwt')
+}
+
 export const api = new Api({
   baseUrl: "https://api.sarmat.students.nomoredomains.work",
   headers: {
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    'Authorization': `Bearer ${getToken()}`,
     'Content-Type': 'application/json'
   }
 });
