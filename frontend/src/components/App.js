@@ -54,10 +54,7 @@ function App() {
         setCurrentUser(profileData)
       })
       .catch((err) => console.log(err))
-  }, [isSuccess]);
 
-  useEffect(() => {
-    if (!isSuccess) return;
     api.getInitialCards()
       .then(cardData => {
         setCards(cardData.map((item => adapter(item))))
@@ -136,13 +133,13 @@ function App() {
       src: serverCardData.link,
       title: serverCardData.name,
       likes: serverCardData.likes,
-      owner: serverCardData.owner._id
+      owner: serverCardData.owner
     }
   };
 
   function handleCardLike(card) {
 
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => {
@@ -207,7 +204,7 @@ function App() {
   function handleAddPlaceSubmit(cardData) {
     api.createCard(cardData)
       .then((newCard) => {
-        setCards([newCard, ...cards])
+        setCards([adapter(newCard), ...cards])
         closeAllPopups()
       })
       .catch((err) => console.log(err))

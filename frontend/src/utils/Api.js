@@ -16,7 +16,8 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   };
 
   getUserInfo() {
@@ -24,7 +25,8 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   };
 
   editProfile(profileData) {
@@ -36,7 +38,8 @@ class Api {
         about: profileData.about
       })
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 
   createCard(cardData) {
@@ -48,7 +51,8 @@ class Api {
         link: cardData.link
       })
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 
   deleteCard(cardId) {
@@ -56,7 +60,8 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 
   setLikes(cardId) {
@@ -64,7 +69,8 @@ class Api {
       method: 'PUT',
       headers: this._headers,
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 
   deleteLikes(cardId) {
@@ -72,7 +78,8 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 
   /*cardVisibilityStatus(cardId, isOwn) {
@@ -88,7 +95,8 @@ class Api {
       method: `${isLiked ? 'PUT' : 'DELETE'}`,
       headers: this._headers,
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 
   editAvatar(avatar) {
@@ -99,7 +107,8 @@ class Api {
         avatar: avatar.avatar
       })
     })
-      .then(res => this._getResponseData(res));
+      .then(res => this._getResponseData(res))
+      .catch((err) => { console.log(err) })
   }
 };
 
